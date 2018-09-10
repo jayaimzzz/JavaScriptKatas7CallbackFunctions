@@ -19,7 +19,6 @@ function betterForEach(array, callbackFunction){
 const lowerCaseLetters = ['a','b','c','d','e']
 
 betterForEach(lowerCaseLetters, function(letter){
-    let result = [];
     let letterUpperCase = letter.toUpperCase()
    console.log(letterUpperCase)
 })
@@ -28,13 +27,13 @@ betterForEach(lowerCaseLetters, function(letter){
 const numbers = [1,2,3,4,5,6,7];
 
 function betterMap(array, callbackFunction){
+    let result = []
     for(let i = 0; i < array.length; i++){
-        array[i] = callbackFunction(array[i]);
+        result = callbackFunction(array[i]);
     }
-    return array
+    return result
 }
-
-displayOnPage(betterMap(numbers, x => x * 2))
+console.log(betterMap(numbers, x => x * 2))
 
 function betterSome(array, callbackConditionalTest){
     let result = false
@@ -94,8 +93,12 @@ function filter (array, callbackFunction){
 console.log(filter(numbers, x => x > 4))
 
 function concat(array1,array2){
+    let result = [];
+    for (i = 0; i < array1.length; i++){
+        result.push(array1[i])
+    }
     for (i = 0; i < array2.length; i++){
-        array1.push(array2[i])
+        result.push(array2[i])
     }
     return array1;
 }
@@ -113,5 +116,3 @@ function includes(array, what){
 }
 
 console.log(includes(lowerCaseLetters, 'a'))
-
-
